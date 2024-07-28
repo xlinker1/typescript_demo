@@ -6,22 +6,14 @@ jobs:
     steps:
       - run: pwd
       - run: ls
-      - run: node --version
-      - run: npm --version
-      - run: tsc --version
-      - run: npm i -g typescript
-      - run: docker --version
-      - run: docker image ls
-      - run: docker pull nginx
-      - run: docker image ls
-
-  job2:
-    runs-on: windows-latest
-    steps:
-      - run: pwd
+      - uses: action/checkout@v4
       - run: ls
-      - run: node --version
-      - run: npm --version
-      - run: npm i -g typescript
       - run: tsc --version
-      - run: docker --version
+      - run: tsc init && tsc
+      - run: ls
+
+      # - run: docker --version
+      # - run: docker image ls
+      # - run: docker pull nginx
+      # - run: docker image ls
+
