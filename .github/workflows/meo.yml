@@ -1,0 +1,14 @@
+on: push
+
+jobs:
+  job1:
+    steps:
+      - run: pwd
+      - run: ls
+
+  job2:
+    steps:
+      - run: node --version
+      - run: npm --version
+      - run: tsc --version
+      - run: npm i -g typescript
