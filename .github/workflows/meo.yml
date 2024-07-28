@@ -2,12 +2,20 @@ on: push
 
 jobs:
   job1:
+    runs-on: ubuntu-latest
     steps:
       - run: pwd
       - run: ls
+      - run: node --version
+      - run: npm --version
+      - run: tsc --version
+      - run: npm i -g typescript
 
   job2:
+    runs-on: windows-latest
     steps:
+      - run: pwd
+      - run: ls
       - run: node --version
       - run: npm --version
       - run: tsc --version
