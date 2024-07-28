@@ -4,13 +4,25 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - run: pwd
-      - run: ls
-      - uses: actions/checkout@v4
-      - run: ls
-      - run: tsc --version
-      - run: tsc --init && tsc
-      - run: ls
+
+      - name: 读取仓库内容
+        uses: actions/checkout@v4
+        run: ls
+
+      - name: 项目编译
+        run: |
+          tsc --version
+          tsc --init && tsc
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload entire repository
+          path: '.'
+          
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 
       # - run: docker --version
       # - run: docker image ls
