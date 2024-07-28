@@ -1,7 +1,7 @@
 on: push
 
 jobs:
-  job1:
+  build:
     runs-on: ubuntu-latest
     steps:
 
@@ -20,9 +20,18 @@ jobs:
         with:
           # Upload entire repository
           path: '.'
-          
+
       - run: ls
 
+
+  deploy:
+    needs: build
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
