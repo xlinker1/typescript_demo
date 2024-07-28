@@ -7,7 +7,8 @@ jobs:
 
       - name: 读取仓库内容
         uses: actions/checkout@v4
-        run: ls
+
+      - run: ls
 
       - name: 项目编译
         run: |
@@ -20,6 +21,8 @@ jobs:
           # Upload entire repository
           path: '.'
           
+      - run: ls
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
